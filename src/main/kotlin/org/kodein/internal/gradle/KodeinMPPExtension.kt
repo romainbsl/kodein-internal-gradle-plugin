@@ -156,7 +156,7 @@ class KodeinMPPExtension(val project: Project) {
                     target = "iosX64",
                     dependencies = listOf(SourceSets.allNativePosix),
                     isNative = true,
-                    exclude = { isExcluded("nonHostNativeTargets") },
+                    exclude = { isExcluded("nonHostNativeTargets") }/*,
                     conf = {
                         if (os.isMacOsX) {
                             target.project.task<KotlinIosTest>("iosX64Test") {
@@ -176,7 +176,7 @@ class KodeinMPPExtension(val project: Project) {
 
                             target.project.tasks["allTests"].dependsOn("iosX64Test")
                         }
-                    }
+                    }*/
             )
 
             val watchosArm32 = KodeinNativeTarget(
