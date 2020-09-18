@@ -3,8 +3,7 @@ name: Snapshot
 on:
   push:
     branches:
-      - master
-      - 'snapshot/*'
+      - 'snapshot-*'
       - 'kotlin-*'
 
 jobs:

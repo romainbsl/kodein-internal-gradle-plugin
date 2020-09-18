@@ -46,7 +46,7 @@ kotlin.target.compilations.all {
 
 allprojects {
     group = "org.kodein.internal.gradle"
-    version = "4.0.1"
+    version = "4.1.0"
 
     afterEvaluate {
         val bintrayUsername = (properties["bintrayUsername"] as String?) ?: System.getenv("BINTRAY_USER")

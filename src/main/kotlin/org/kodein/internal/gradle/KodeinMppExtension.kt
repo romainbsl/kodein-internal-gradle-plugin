@@ -11,7 +11,11 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinAndroidTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinCommonCompilation
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinOnlyTarget
+import org.jetbrains.kotlin.gradle.targets.js.KotlinJsCompilerAttribute
 import org.jetbrains.kotlin.gradle.targets.js.KotlinJsTarget
+import org.jetbrains.kotlin.gradle.targets.js.calculateJsCompilerType
+import org.jetbrains.kotlin.gradle.targets.js.ir.KotlinJsIrCompilation
+import org.jetbrains.kotlin.gradle.targets.js.ir.KotlinJsIrTarget
 import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
 
 typealias SourceSetConf = KotlinSourceSet.(NamedDomainObjectContainer<out KotlinSourceSet>) -> Unit
@@ -242,6 +246,13 @@ class KodeinMppExtension(val project: Project) {
                     conf = { target.browser() ; target.nodejs() }
             )
 
+            val both = KodeinJsTarget(
+                    target = "jsBoth",
+                    name = "js",
+                    dependencies = listOf(SourceSets.allJs),
+                    conf = { target.browser() ; target.nodejs() }
+            )
+
             val webjs = KodeinJsTarget(
                     target = "js",
                     name = "webjs",
@@ -256,7 +267,7 @@ class KodeinMppExtension(val project: Project) {
                     conf = { target.nodejs() }
             )
 
-            val all = listOf(js, nodejs, webjs)
+            val all = listOf(js, both, nodejs, webjs)
         }
 
         val js = JS
