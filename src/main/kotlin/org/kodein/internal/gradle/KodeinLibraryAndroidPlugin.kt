@@ -15,7 +15,6 @@ class KodeinLibraryAndroidPlugin : KtPlugin<Project> {
     override fun Project.applyPlugin() {
         apply {
             plugin<KodeinAndroidPlugin>()
-            plugin("maven-publish")
             plugin("digital.wup.android-maven-publish")
             plugin<KodeinUploadModulePlugin>()
         }
