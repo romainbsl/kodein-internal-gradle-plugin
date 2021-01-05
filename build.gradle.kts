@@ -41,7 +41,6 @@ dependencies {
     api("org.jetbrains.kotlin:kotlin-gradle-plugin:${KodeinVersions.kotlin}")
     api("com.android.tools.build:gradle:${KodeinVersions.androidBuildTools}")
     api("org.jetbrains.dokka:dokka-gradle-plugin:${KodeinVersions.dokka}")
-    api("digital.wup:android-maven-publish:3.6.3")
     api("com.squareup.okhttp3:okhttp:4.9.0")
 }
 

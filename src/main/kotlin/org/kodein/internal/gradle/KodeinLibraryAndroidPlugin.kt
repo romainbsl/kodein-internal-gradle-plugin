@@ -15,7 +15,7 @@ class KodeinLibraryAndroidPlugin : KtPlugin<Project> {
     override fun Project.applyPlugin() {
         apply {
             plugin<KodeinAndroidPlugin>()
-            plugin("digital.wup.android-maven-publish")
+            plugin("maven-publish")
             plugin<KodeinUploadModulePlugin>()
         }
 
@@ -29,12 +29,14 @@ class KodeinLibraryAndroidPlugin : KtPlugin<Project> {
             from(android.sourceSets["main"].java.srcDirs)
         }
 
-        @Suppress("UnstableApiUsage")
-        extensions.configure<PublishingExtension>("publishing") {
-            publications {
-                create<MavenPublication>("Kodein") {
-                    from(components["android"])
-                    artifact(sourcesJar)
+        afterEvaluate {
+            @Suppress("UnstableApiUsage")
+            extensions.configure<PublishingExtension>("publishing") {
+                publications {
+                    create<MavenPublication>("Kodein") {
+                        from(components["release"])
+                        artifact(sourcesJar)
+                    }
                 }
             }
         }
